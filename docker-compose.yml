@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  pdc-agent:
+    image: grafana/pdc-agent:latest
+    container_name: pdc-agent
+    env_file:
+      - .env
+    command: >
+      -token ${TOKEN}
+      -cluster prod-us-east-0
+      -gcloud-hosted-grafana-id 814177
+      -ssh-flag='-o PermitRemoteOpen=twohoursonelife.cbqw2zmra9kl.us-east-1.rds.amazonaws.com:3306'
+    restart: always
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: "us-east-1"
+        awslogs-create-group: "true"
+        awslogs-group: "grafana-pdc-agent"
+        awslogs-stream: "grafana-pdc-agent"
