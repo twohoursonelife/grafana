@@ -10,7 +10,6 @@ services:
       -token ${TOKEN}
       -cluster prod-us-east-0
       -gcloud-hosted-grafana-id 814177
-      -ssh-flag='-o PermitRemoteOpen=twohoursonelife.cbqw2zmra9kl.us-east-1.rds.amazonaws.com:3306'
     restart: always
     logging:
       driver: awslogs
